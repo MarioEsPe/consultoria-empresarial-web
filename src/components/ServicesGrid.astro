@@ -1,36 +1,36 @@
 ---
-// Aquí podríamos traer los servicios de una base de datos, 
-// pero por ahora los escribimos directamente en el HTML.
+// Cuadrícula de Servicios - Enfoque Organizacional y de Negocios
 ---
 
 <section id="servicios" class="services-section">
   <div class="services-header">
-    <h2>Nuestras Soluciones</h2>
-    <p>Integramos conocimiento industrial profundo con tecnología de vanguardia.</p>
+    <h2>Soluciones Estratégicas</h2>
+    <p>Metodologías probadas y experiencia fundacional para llevar tu empresa al siguiente nivel.</p>
   </div>
 
   <div class="services-grid">
     <div class="service-card">
-      <div class="icon-placeholder">⚙️</div>
-      <h3>Gestión y Optimización Operativa</h3>
-      <p>Supervisión y mejora de procesos industriales. Aportamos visión estratégica respaldada por años de experiencia directa en la operación y mantenimiento del sector energético.</p>
+      <div class="icon-placeholder">📊</div>
+      <h3>Diagnóstico y Estructuración</h3>
+      <p>Identificamos los cuellos de botella en tu operación. Diseñamos organigramas, definimos roles y establecemos responsabilidades claras para que el negocio funcione de manera eficiente y ordenada.</p>
     </div>
 
     <div class="service-card">
-      <div class="icon-placeholder">💻</div>
-      <h3>Desarrollo de Software y Automatización</h3>
-      <p>Creación de herramientas internas, scripts y plataformas a medida para digitalizar flujos de trabajo tradicionales, eliminando cuellos de botella y errores manuales.</p>
+      <div class="icon-placeholder">🤝</div>
+      <h3>Cultura Laboral y Liderazgo</h3>
+      <p>Transformamos el clima organizacional. Implementamos estrategias para retener talento, mejorar la comunicación interna y formar equipos comprometidos que impulsen el crecimiento de la empresa.</p>
     </div>
 
     <div class="service-card">
-      <div class="icon-placeholder">☁️</div>
-      <h3>Arquitectura Cloud (CloudOps)</h3>
-      <p>Diseño e implementación de infraestructura escalable y segura en la nube. Preparamos el terreno tecnológico de tu empresa para la alta disponibilidad y el análisis de datos.</p>
+      <div class="icon-placeholder">🚀</div>
+      <h3>Estandarización para Escalar</h3>
+      <p>Creamos manuales, procesos repetibles y sistemas de gestión que te permitirán delegar con confianza. Preparamos la base operativa de tu negocio para crecer sin depender de ti en el día a día.</p>
     </div>
   </div>
 </section>
 
 <style>
+  /* Mantenemos exactamente los mismos estilos que ya funcionaban perfecto */
   .services-section {
     padding: 5rem 2rem;
     background-color: #ffffff;
@@ -53,16 +53,14 @@
     color: #64748b;
   }
 
-  /* Aquí ocurre la magia de la cuadrícula responsiva */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr); /* 1 columna en celulares */
+    grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
   }
 
-  /* Cuando la pantalla es más grande (tablets/PC), cambia a 3 columnas */
   @media (min-width: 768px) {
     .services-grid {
       grid-template-columns: repeat(3, 1fr);
