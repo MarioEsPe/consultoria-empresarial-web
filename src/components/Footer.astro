@@ -1,0 +1,121 @@
+---
+// Pie de página principal
+---
+
+<footer class="footer-section">
+  <div class="footer-container">
+    
+    <div class="footer-brand">
+      <h3>Consultoría<span>Empresarial</span></h3>
+      <p>Transformando el caos operativo en estructuras rentables y escalables, respaldados por la experiencia de Sitar DLD 14.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contacto</h4>
+      <p>📍 Mérida, Yucatán, México</p>
+      <p>📧 hola@tuconsultoria.com</p>
+      <p>📱 +52 (990) 101-0584</p> 
+    </div>
+
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; {new Date().getFullYear()} Consultoría Empresarial. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    background-color: #0f172a; /* Azul muy oscuro, casi negro */
+    color: #f8fafc;
+    padding: 4rem 2rem 1rem 2rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Cambia a 3 columnas en pantallas grandes */
+  @media (min-width: 768px) {
+    .footer-container {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+
+  .footer-brand h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-brand h3 span {
+    color: #3b82f6; /* Azul brillante */
+  }
+
+  .footer-brand p {
+    color: #94a3b8;
+    line-height: 1.6;
+    max-width: 400px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    color: #f8fafc;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #3b82f6;
+  }
+
+  .footer-contact p {
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.875rem;
+  }
+</style>
