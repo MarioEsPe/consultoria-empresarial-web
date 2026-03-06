@@ -1,5 +1,5 @@
 ---
-// Componente de Formulario de Contacto
+// Componente de Formulario de Contacto conectado a AWS
 ---
 
 <section id="contacto" class="contact-section">
@@ -9,7 +9,7 @@
       <p>Agenda un diagnóstico inicial y descubre cómo podemos ayudarte a estructurar y escalar tu negocio.</p>
     </div>
 
-    <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('¡Formulario de prueba enviado!');">
+    <form id="formulario-contacto" class="contact-form">
       <div class="form-group">
         <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Pérez" required />
@@ -30,93 +30,84 @@
         <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente qué te gustaría resolver en tu organización..." required></textarea>
       </div>
 
-      <button type="submit" class="btn-submit">Solicitar diagnóstico</button>
+      <p id="mensaje-estado" class="status-message hidden"></p>
+
+      <button type="submit" id="btn-submit" class="btn-submit">Solicitar diagnóstico</button>
     </form>
   </div>
 </section>
 
 <style>
-  .contact-section {
-    padding: 5rem 2rem;
-    background-color: #f8fafc; /* Un fondo claro para resaltar el formulario */
-    font-family: system-ui, -apple-system, sans-serif;
-  }
-
-  .contact-container {
-    max-width: 700px; /* Más estrecho para que el formulario sea fácil de leer */
-    margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 1rem;
-    padding: 3rem;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
-  }
-
-  .contact-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .contact-header h2 {
-    font-size: 2.25rem;
-    color: #0f172a;
-    margin-bottom: 1rem;
-  }
-
-  .contact-header p {
-    font-size: 1.125rem;
-    color: #64748b;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  label {
-    font-weight: 600;
-    color: #1e293b;
-    font-size: 0.95rem;
-  }
-
-  input, textarea {
-    padding: 0.875rem 1rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.2s ease;
-    background-color: #f8fafc;
-  }
-
-  input:focus, textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .btn-submit {
-    margin-top: 1rem;
-    background-color: #2563eb;
-    color: white;
-    padding: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .btn-submit:hover {
-    background-color: #1d4ed8;
-  }
+  /* Mantenemos los estilos visuales que ya teníamos */
+  .contact-section { padding: 5rem 2rem; background-color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
+  .contact-container { max-width: 700px; margin: 0 auto; background-color: #ffffff; border-radius: 1rem; padding: 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
+  .contact-header { text-align: center; margin-bottom: 2.5rem; }
+  .contact-header h2 { font-size: 2.25rem; color: #0f172a; margin-bottom: 1rem; }
+  .contact-header p { font-size: 1.125rem; color: #64748b; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  label { font-weight: 600; color: #1e293b; font-size: 0.95rem; }
+  input, textarea { padding: 0.875rem 1rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-size: 1rem; font-family: inherit; transition: all 0.2s ease; background-color: #f8fafc; }
+  input:focus, textarea:focus { outline: none; border-color: #2563eb; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+  .btn-submit { margin-top: 1rem; background-color: #2563eb; color: white; padding: 1rem; border: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; }
+  .btn-submit:hover { background-color: #1d4ed8; }
+  .btn-submit:disabled { background-color: #94a3b8; cursor: not-allowed; }
+  
+  /* Nuevos estilos para los mensajes de estado */
+  .status-message { padding: 1rem; border-radius: 0.5rem; font-weight: 500; text-align: center; }
+  .hidden { display: none; }
+  .success { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .error { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
 </style>
+
+<script>
+  // Lógica de JavaScript que corre en el navegador del cliente
+  const formulario = document.getElementById('formulario-contacto') as HTMLFormElement;
+  const mensajeEstado = document.getElementById('mensaje-estado') as HTMLParagraphElement;
+  const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+
+  // !!! REEMPLAZA ESTA URL POR LA TUYA Y AGREGA /contacto AL FINAL !!!
+  const API_URL = 'https://5o3u9f4x7l.execute-api.us-east-2.amazonaws.com/contacto';
+
+  formulario.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Evitamos que la página se recargue
+
+    // Cambiamos el estado del botón mientras carga
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Enviando...';
+    mensajeEstado.classList.add('hidden');
+
+    // Recolectamos los datos
+    const formData = new FormData(formulario);
+    const datosJSON = Object.fromEntries(formData.entries());
+
+    try {
+      // Hacemos la llamada HTTP a AWS
+      const respuesta = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosJSON)
+      });
+
+      if (respuesta.ok) {
+        // Éxito: Limpiamos el formulario y mostramos mensaje
+        formulario.reset();
+        mensajeEstado.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+        mensajeEstado.className = 'status-message success';
+      } else {
+        throw new Error('Error en la respuesta del servidor');
+      }
+    } catch (error) {
+      // Error: Mostramos mensaje al usuario
+      console.error('Error:', error);
+      mensajeEstado.textContent = 'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo más tarde.';
+      mensajeEstado.className = 'status-message error';
+    } finally {
+      // Regresamos el botón a la normalidad
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Solicitar diagnóstico';
+    }
+  });
+</script>
