@@ -1,113 +1,126 @@
 ---
-// Componente de Formulario de Contacto conectado a AWS
+// src/components/Contact.astro
 ---
 
 <section id="contacto" class="contact-section">
-  <div class="contact-container">
-    <div class="contact-header">
-      <h2>Hablemos de tu empresa</h2>
-      <p>Agenda un diagnóstico inicial y descubre cómo podemos ayudarte a estructurar y escalar tu negocio.</p>
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2 class="section-title">Iniciemos la Evolución</h2>
+        <p class="contact-description">
+          Contáctanos para un diagnóstico organizacional o asesoría técnica especializada en la Península de Yucatán[cite: 28, 159].
+        </p>
+        
+        <ul class="expertise-list">
+          <li>✓ Optimización de Recursos y Procesos [cite: 52, 183]</li>
+          <li>✓ Cumplimiento Normativo y Ambiental [cite: 62, 194]</li>
+          <li>✓ Transformación Digital Realista [cite: 16, 84, 215]</li>
+        </ul>
+
+        <div class="direct-contact">
+          <p><strong>Email:</strong> <a href="mailto:directivadld14@gmail.com">directivadld14@gmail.com</a> [cite: 135]</p>
+          <p><strong>Teléfono:</strong> 999 700 0372 [cite: 134]</p>
+          <p><strong>Ubicación:</strong> Mérida, Yucatán, México [cite: 136]</p>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre Completo</label>
+            <input type="text" id="name" name="name" required placeholder="Ej. Juan Pérez" />
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Correo Corporativo</label>
+            <input type="email" id="email" name="email" required placeholder="juan@empresa.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Asunto de Consultoría</label>
+            <select id="subject" name="subject">
+              <option value="diagnostico">Diagnóstico Organizacional</option>
+              <option value="digitalizacion">Transformación Digital</option>
+              <option value="sustentabilidad">Sustentabilidad y Rentabilidad</option>
+              <option value="otro">Otro servicio</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Describa brevemente su necesidad..."></textarea>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-submit">Enviar Solicitud</button>
+          <p id="formStatus" class="form-status hidden"></p>
+        </form>
+      </div>
     </div>
-
-    <form id="formulario-contacto" class="contact-form">
-      <div class="form-group">
-        <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Pérez" required />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="tu@empresa.com" required />
-      </div>
-
-      <div class="form-group">
-        <label for="empresa">Nombre de tu empresa</label>
-        <input type="text" id="empresa" name="empresa" placeholder="¿Cómo se llama tu negocio?" />
-      </div>
-
-      <div class="form-group">
-        <label for="mensaje">¿Cuál es tu principal reto actual?</label>
-        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente qué te gustaría resolver en tu organización..." required></textarea>
-      </div>
-
-      <p id="mensaje-estado" class="status-message hidden"></p>
-
-      <button type="submit" id="btn-submit" class="btn-submit">Solicitar diagnóstico</button>
-    </form>
   </div>
 </section>
 
 <style>
-  /* Mantenemos los estilos visuales que ya teníamos */
-  .contact-section { padding: 5rem 2rem; background-color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
-  .contact-container { max-width: 700px; margin: 0 auto; background-color: #ffffff; border-radius: 1rem; padding: 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0; }
-  .contact-header { text-align: center; margin-bottom: 2.5rem; }
-  .contact-header h2 { font-size: 2.25rem; color: #0f172a; margin-bottom: 1rem; }
-  .contact-header p { font-size: 1.125rem; color: #64748b; }
-  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-  label { font-weight: 600; color: #1e293b; font-size: 0.95rem; }
-  input, textarea { padding: 0.875rem 1rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-size: 1rem; font-family: inherit; transition: all 0.2s ease; background-color: #f8fafc; }
-  input:focus, textarea:focus { outline: none; border-color: #38A169; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1); }
-  .btn-submit { margin-top: 1rem; background-color: #38A169; color: white; padding: 1rem; border: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; }
-  .btn-submit:hover { background-color: #2F855A; }
-  .btn-submit:disabled { background-color: #94a3b8; cursor: not-allowed; }
+  .contact-section { padding: 6rem 2rem; background-color: #ffffff; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
   
-  /* Nuevos estilos para los mensajes de estado */
-  .status-message { padding: 1rem; border-radius: 0.5rem; font-weight: 500; text-align: center; }
+  .section-title { color: #1a202c; font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .contact-description { font-size: 1.1rem; color: #4a5568; margin-bottom: 2rem; }
+  
+  .expertise-list { list-style: none; padding: 0; margin-bottom: 2rem; color: #2F855A; font-weight: 600; }
+  .expertise-list li { margin-bottom: 0.5rem; }
+
+  .direct-contact p { margin-bottom: 0.75rem; color: #2d3748; }
+  .direct-contact a { color: #38A169; text-decoration: none; font-weight: 600; }
+
+  .form-container { background: #f8fafc; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+  .form-group { margin-bottom: 1.5rem; text-align: left; }
+  .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; font-family: inherit;
+  }
+  
+  .btn-submit {
+    width: 100%; padding: 1rem; background-color: #2F855A; color: white; border: none;
+    border-radius: 0.375rem; font-weight: 700; cursor: pointer; transition: background 0.3s;
+  }
+  .btn-submit:hover { background-color: #276749; }
   .hidden { display: none; }
-  .success { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-  .error { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 </style>
 
 <script>
-  // Lógica de JavaScript que corre en el navegador del cliente
-  const formulario = document.getElementById('formulario-contacto') as HTMLFormElement;
-  const mensajeEstado = document.getElementById('mensaje-estado') as HTMLParagraphElement;
-  const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+  // Lógica de cliente en Vanilla JS con tipado seguro
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const status = document.getElementById('formStatus') as HTMLElement;
 
-  // !!! REEMPLAZA ESTA URL POR LA TUYA Y AGREGA /contacto AL FINAL !!!
-  const API_URL = 'https://5o3u9f4x7l.execute-api.us-east-2.amazonaws.com/contacto';
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
 
-  formulario.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evitamos que la página se recargue
-
-    // Cambiamos el estado del botón mientras carga
-    btnSubmit.disabled = true;
-    btnSubmit.textContent = 'Enviando...';
-    mensajeEstado.classList.add('hidden');
-
-    // Recolectamos los datos
-    const formData = new FormData(formulario);
-    const datosJSON = Object.fromEntries(formData.entries());
+    status.textContent = "Enviando...";
+    status.classList.remove('hidden');
 
     try {
-      // Hacemos la llamada HTTP a AWS
-      const respuesta = await fetch(API_URL, {
+      // Aquí usamos el endpoint de tu API Gateway en AWS
+      const response = await fetch('https://5o3u9f4x7l.execute-api.us-east-2.amazonaws.com/contacto', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosJSON)
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
       });
 
-      if (respuesta.ok) {
-        // Éxito: Limpiamos el formulario y mostramos mensaje
-        formulario.reset();
-        mensajeEstado.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
-        mensajeEstado.className = 'status-message success';
+      if (response.ok) {
+        status.textContent = "Mensaje enviado con éxito. La Dra. Diana se pondrá en contacto pronto.";
+        status.style.color = "#2F855A";
+        form.reset();
       } else {
-        throw new Error('Error en la respuesta del servidor');
+        throw new Error();
       }
-    } catch (error) {
-      // Error: Mostramos mensaje al usuario
-      console.error('Error:', error);
-      mensajeEstado.textContent = 'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo más tarde.';
-      mensajeEstado.className = 'status-message error';
-    } finally {
-      // Regresamos el botón a la normalidad
-      btnSubmit.disabled = false;
-      btnSubmit.textContent = 'Solicitar diagnóstico';
+    } catch (err) {
+      status.textContent = "Error al enviar. Por favor intente de nuevo o contacte vía email.";
+      status.style.color = "#c53030";
     }
   });
 </script>
