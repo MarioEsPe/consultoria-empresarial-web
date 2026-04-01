@@ -112,14 +112,14 @@
       });
 
       if (response.ok) {
-        status.textContent = "Mensaje enviado con éxito. La Dra. Diana se pondrá en contacto pronto.";
+        status.textContent = "Solicitud enviada. La Dra. Diana Sánchez Herrera le contactará pronto.";
         status.style.color = "#2F855A";
         form.reset();
       } else {
-        throw new Error();
+        throw new Error("Error en el servidor");
       }
     } catch (err) {
-      status.textContent = "Error al enviar. Por favor intente de nuevo o contacte vía email.";
+      status.textContent = "Error al conectar con el servidor de Innova Praxis. Intente de nuevo.";
       status.style.color = "#c53030";
     }
   });
