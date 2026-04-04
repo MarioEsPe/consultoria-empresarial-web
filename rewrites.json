@@ -1,0 +1,32 @@
+[
+  {
+    "source": "https://innovapraxis.com.mx",
+    "status": "301",
+    "target": "https://www.innovapraxis.mx"
+  },
+  {
+    "source": "https://innovapraxis.com.mx/<*>",
+    "status": "301",
+    "target": "https://www.innovapraxis.mx/<*>"
+  },
+  {
+    "source": "https://www.innovapraxis.com.mx",
+    "status": "301",
+    "target": "https://www.innovapraxis.mx"
+  },
+  {
+    "source": "https://www.innovapraxis.com.mx/<*>",
+    "status": "301",
+    "target": "https://www.innovapraxis.mx/<*>"
+  },
+  {
+    "source": "https://innovapraxis.mx",
+    "status": "301",
+    "target": "https://www.innovapraxis.mx"
+  },
+  {
+    "source": "/<*>",
+    "status": "404-200",
+    "target": "/index.html"
+  }
+]
