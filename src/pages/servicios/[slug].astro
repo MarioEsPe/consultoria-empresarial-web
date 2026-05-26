@@ -1,0 +1,260 @@
+---
+// src/pages/servicios/[slug].astro
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// La función getStaticPaths es requerida por Astro para generar rutas dinámicas estáticas.
+export function getStaticPaths() {
+  const servicios = [
+    {
+      slug: 'aceleracion-startups',
+      title: "Aceleración de Startups y Diagnóstico Organizacional",
+      description: "Evaluación estructural profunda para empresas consolidadas y negocios emergentes. Identificamos cuellos de botella y diseñamos modelos operativos escalables. Nuestro objetivo es blindar su estructura interna, asegurar la continuidad operativa y potenciar la rentabilidad de su modelo de negocio desde sus cimientos.",
+      ctaCall: "Añada este servicio a su carrito o envíenos un mensaje para agendar una entrevista de diagnóstico gratuito.",
+      ctaDetail: "En esta sesión inicial escucharemos las necesidades exactas de su proyecto o empresa para estructurar una propuesta formal a la medida (definiendo alcances, cronogramas y cotización)."
+    },
+    {
+      slug: 'digitalizacion-ia',
+      title: "Digitalización e Inteligencia Artificial Corporativa",
+      description: "Transformamos su operatividad tradicional integrando herramientas tecnológicas de última generación. Asesoramos en la adopción de flujos de trabajo automatizados y soluciones de Inteligencia Artificial hechas a la medida de los requerimientos de su empresa, optimizando tiempos de respuesta y reduciendo costos operativos.",
+      ctaCall: "Seleccione \"Añadir al carrito\" para coordinar una entrevista de diagnóstico gratuito.",
+      ctaDetail: "Ya sea usted un emprendedor o el director de un corporativo, en este primer acercamiento evaluaremos su infraestructura actual para presentarle una propuesta ejecutiva que detalle los costos, tiempos y límites de su evolución tecnológica."
+    },
+    {
+      slug: 'ingenieria-ambiental',
+      title: "Ingeniería Ambiental y Tratamiento Hídrico",
+      description: "Diagnóstico analítico y selección de tecnologías de tratamiento en función de los requerimientos específicos de descarga y la tipología de su proyecto. Diseñamos e implementamos soluciones avanzadas, garantizando el cumplimiento normativo ambiental para desarrollos comerciales, habitacionales o industriales.",
+      ctaCall: "Añada este artículo a su carrito para agendar una entrevista de diagnóstico técnico gratuito.",
+      ctaDetail: "Analizaremos las variables de su obra (junto a su constructora, despacho o mesa de inversionistas) para formular una propuesta de ingeniería precisa, estableciendo viabilidad, alcances y presupuestos claros."
+    },
+    {
+      slug: 'arquitectura-sustentable',
+      title: "Arquitectura Sustentable y Diseño Ecológico",
+      description: "Asesoría especializada para proyectos constructivos de alto impacto. Incrementamos el valor comercial y estético de sus desarrollos a través de la integración inteligente de áreas verdes, especificación de materiales sustentables y la implementación de sistemas de prestación de servicios ecológicos.",
+      ctaCall: "Haga clic en \"Añadir al carrito\" y envíenos su solicitud para programar una entrevista de diagnóstico gratuito.",
+      ctaDetail: "Durante esta llamada recabaremos la visión de su desarrollo para estructurar un plan de trabajo formal y una propuesta económica alineada a sus expectativas de inversión y tiempos de entrega."
+    },
+    {
+      slug: 'puntoagil-logistica',
+      title: "PuntoÁgil - Dispensación Automatizada (División Logística)",
+      description: "Nuestra división tecnológica especializada en infraestructura logística B2B. Diseñamos e implementamos celdas automatizadas (vending inteligente) a costo cero de inversión para colegios y corporativos. Operación silenciosa con telemetría avanzada, cumplimiento estricto de la NOM-051 y pagos cashless.",
+      ctaCall: "Añada esta solución a su carrito para solicitar un análisis de factibilidad gratuito.",
+      ctaDetail: "En esta entrevista evaluaremos la densidad y flujos de su institución (educativa, médica o industrial) para presentarle una propuesta de despliegue a la medida, detallando la logística operativa y el convenio de servicio."
+    }
+  ];
+
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+const { servicio } = Astro.props;
+---
+
+<Layout title={`${servicio.title} | Innova Praxis`}>
+  
+  <Navbar />
+  
+  <main class="service-page">
+    <header class="service-header">
+      <div class="container">
+        <span class="badge">Consultoría Especializada</span>
+        <h1 class="service-title">{servicio.title}</h1>
+      </div>
+    </header>
+
+    <section class="service-content container">
+      <div class="service-details">
+        <h2>Descripción del Servicio</h2>
+        <p class="description">{servicio.description}</p>
+      </div>
+
+      <aside class="service-action-panel">
+        <div class="pricing-card">
+          <div class="price-placeholder">Consultoría B2B</div>
+          <h3>Primer Paso: Diagnóstico</h3>
+          <p class="cta-call">📥 {servicio.ctaCall}</p>
+          
+          <div class="action-buttons">
+            <button class="btn-cart">Añadir al carrito</button>
+            <a href="/#contacto" class="btn-outline">Mensaje Directo</a>
+          </div>
+
+          <hr class="divider" />
+          
+          <div class="cta-detail">
+            <h4>¿Qué incluye esta sesión?</h4>
+            <p>{servicio.ctaDetail}</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<style>
+  /* --- ESTILOS SCOPED PARA LA PÁGINA DE SERVICIO --- */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .service-page {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+  }
+
+  .service-header {
+    background-color: #ffffff;
+    padding: 4rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border-radius: 9999px;
+    background-color: #e6ffed;
+    color: #2F855A;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1.2;
+    max-width: 800px;
+  }
+
+  .service-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 992px) {
+    .service-content {
+      grid-template-columns: 3fr 2fr;
+    }
+  }
+
+  .service-details h2 {
+    font-size: 1.5rem;
+    color: #2F855A;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    color: #4a5568;
+    line-height: 1.8;
+  }
+
+  .pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 100px; 
+  }
+
+  .price-placeholder {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #718096;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    color: #1a202c;
+    margin-bottom: 1rem;
+  }
+
+  .cta-call {
+    font-size: 1rem;
+    color: #2D3748;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-cart {
+    background-color: #38A169;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-cart:hover {
+    background-color: #2F855A;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: #38A169;
+    border: 2px solid #38A169;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: #e6ffed;
+  }
+
+  .divider {
+    border: 0;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 2rem 0;
+  }
+
+  .cta-detail h4 {
+    font-size: 1rem;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-detail p {
+    font-size: 0.9rem;
+    color: #4a5568;
+    line-height: 1.6;
+    font-style: italic;
+  }
+</style>
