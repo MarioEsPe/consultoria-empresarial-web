@@ -26,7 +26,7 @@
   },
   {
     "source": "/<*>",
-    "status": "404-200",
-    "target": "/index.html"
+    "status": "404",
+    "target": "/404.html"
   }
 ]
