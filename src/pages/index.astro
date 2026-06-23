@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import AboutUs from '../components/AboutUs.astro';
@@ -7,43 +8,35 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Innova Praxis | Consultoría Organizacional</title>
-        <meta name="description" content="Servicios integrales enfocados en la rentabilidad, la innovación y el desarrollo humano." />
-    </head>
-    <body>
-        
-        <Navbar />
-        <Hero />
-        
-        <section class="services-teaser" id="servicios">
-            <div class="container">
-                <h2>Nuestras Soluciones</h2>
-                <p>Servicios integrales enfocados en la rentabilidad, la innovación tecnológica y el desarrollo humano corporativo.</p>
-                
-                <div class="teaser-links">
-                    <a href="/servicios/aceleracion-startups" class="btn-outline">Aceleración y Diagnóstico</a>
-                    <a href="/servicios/digitalizacion-ia" class="btn-outline">Digitalización e IA</a>
-                    <a href="/servicios/ingenieria-ambiental" class="btn-outline">Ingeniería Ambiental</a>
-                    <a href="/servicios/arquitectura-sustentable" class="btn-outline">Arquitectura Sustentable</a>
-                    <a href="/servicios/puntoagil-logistica" class="btn-outline">División Logística (PuntoÁgil)</a>
-                </div>
+<Layout title="Innova Praxis | Consultoría Organizacional">
+    <Navbar />
+    <Hero />
+    
+    <section class="services-teaser" id="servicios">
+        <div class="container">
+            <h2>Nuestras Soluciones</h2>
+            <p>Servicios integrales enfocados en la rentabilidad, la innovación tecnológica y el desarrollo humano corporativo.</p>
+            
+            <div class="teaser-links">
+                <a href="/servicios/aceleracion-startups" class="btn-outline">Aceleración y Diagnóstico</a>
+                <a href="/servicios/digitalizacion-ia" class="btn-outline">Digitalización e IA</a>
+                <a href="/servicios/ingenieria-ambiental" class="btn-outline">Ingeniería Ambiental</a>
+                <a href="/servicios/arquitectura-sustentable" class="btn-outline">Arquitectura Sustentable</a>
+                <a href="/servicios/puntoagil-logistica" class="btn-outline">División Logística (PuntoÁgil)</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <AboutUs />
-        <Contact />
-        <Footer />
-        
-    </body>
-</html>
+    <AboutUs />
+    <Contact />
+    <Footer />
+</Layout>
 
 <style>
     /* Estilos globales básicos y específicos del teaser */
-    body {
+    
+    /* Usamos :global() para asegurar que el body herede los estilos corporativos a través del Layout */
+    :global(body) {
         margin: 0;
         padding: 0;
         font-family: system-ui, -apple-system, sans-serif;
