@@ -9,27 +9,11 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Innova Praxis | Consultoría y Transformación Digital">
+<Layout title="Innova Praxis | Consultoría y Transformación Corporativa">
   <Navbar />
   
   <main class="main-content">
     <Hero />
-
-    <section class="services-teaser" id="servicios" aria-label="Resumen de servicios">
-      <div class="container">
-        <h2 class="section-title">Nuestras Soluciones</h2>
-        <p class="section-lead">Servicios integrales enfocados en la rentabilidad, la innovación tecnológica y el desarrollo humano corporativo.</p>
-        
-        <div class="teaser-links">
-          <a href="/servicios/aceleracion-startups" class="btn-secondary">Aceleración y Diagnóstico</a>
-          <a href="/servicios/digitalizacion-ia" class="btn-secondary">Digitalización e IA</a>
-          <a href="/servicios/ingenieria-ambiental" class="btn-secondary">Ingeniería Ambiental</a>
-          <a href="/servicios/arquitectura-sustentable" class="btn-secondary">Arquitectura Sustentable</a>
-          <a href="/servicios/puntoagil-logistica" class="btn-secondary">División Logística (PuntoÁgil)</a>
-        </div>
-      </div>
-    </section>
-
     <ServicesGrid />
     <About />
     <Contact />
@@ -46,80 +30,5 @@ import Footer from '../components/Footer.astro';
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden; 
-  }
-
-  /* --- ESTILOS FLUIDOS DEL TEASER --- */
-  .services-teaser {
-    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
-    background-color: #ffffff;
-    text-align: center;
-    border-bottom: 1px solid #e2e8f0;
-    width: 100%;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .section-title {
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    color: var(--color-primary-dark, #2F855A);
-    margin-bottom: 1rem;
-    font-weight: 800;
-    line-height: 1.2;
-    font-family: var(--font-primary);
-  }
-
-  .section-lead {
-    color: var(--color-text-muted, #4a5568);
-    font-size: clamp(1rem, 2vw, 1.125rem);
-    line-height: 1.6;
-    margin: 0 auto clamp(2.5rem, 4vw, 3rem);
-    max-width: 700px;
-    padding: 0 0.5rem;
-    font-family: var(--font-secondary);
-  }
-
-  .teaser-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Reutilización del token de botón definido en Layout */
-  .btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 1.25rem;
-    background-color: transparent;
-    color: var(--color-primary, #38A169);
-    font-weight: 600;
-    text-decoration: none;
-    border: 2px solid var(--color-primary, #38A169);
-    border-radius: 0.375rem;
-    transition: all 0.3s ease;
-    text-align: center;
-    font-family: var(--font-primary);
-    font-size: 0.875rem;
-  }
-
-  .btn-secondary:hover {
-    background-color: var(--color-primary-light, #e6ffed);
-    color: var(--color-primary-dark, #2F855A);
-    border-color: var(--color-primary-dark, #2F855A);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 480px) {
-    .teaser-links {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .btn-secondary {
-      width: 100%;
-    }
   }
 </style>
