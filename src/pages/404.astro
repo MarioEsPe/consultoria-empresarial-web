@@ -7,17 +7,19 @@ interface Props {
 }
 ---
 
-<Layout title="Error 404 | Página no encontrada">
+<Layout title="Error 404 | Enlace no disponible en el servidor">
   <main class="error-container">
     <div class="error-content">
-      <span class="badge">Error 404</span>
+      
+      <!-- H1 Estricto: Código 404 en Rojo Técnico de Alerta -->
       <h1 class="error-title">
-        Búsqueda fuera de <br />
-        <span class="highlight">Parámetros Óptimos</span>
+        <span class="error-code">404</span>
+        <span class="error-subtitle">Enlace no disponible en el servidor</span>
       </h1>
       
+      <!-- Copywriting conciso normativo -->
       <p class="error-description">
-        La página que intenta consultar no existe o ha cambiado de ruta. En la consultoría estratégica y la ciencia aplicada, la eficiencia radica en corregir el rumbo con precisión.
+        El enlace solicitado no se encuentra en el servidor. En la consultoría estratégica y la ciencia aplicada, la eficiencia radica en corregir el rumbo con precisión.
       </p>
 
       <blockquote class="error-quote">
@@ -25,10 +27,12 @@ interface Props {
         <footer>— Dra. Diana Sánchez H.</footer>
       </blockquote>
 
+      <!-- CTAs de escape oficiales hacia el ecosistema B2B -->
       <div class="error-actions">
-        <a href="/" class="btn-primary">Regresar al Inicio</a>
-        <a href="/#servicios" class="btn-secondary">Nuestros Servicios</a>
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="/#contacto" class="btn-secondary">Ir al formulario de evaluación</a>
       </div>
+      
     </div>
   </main>
 </Layout>
@@ -40,103 +44,131 @@ interface Props {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 2rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
     background-color: #f8fafc;
     text-align: center;
-    box-sizing: border-box;
+    width: 100%;
   }
 
   .error-content {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
-  }
-
-  .badge {
-    display: inline-block;
-    padding: 0.25rem 1rem;
-    border-radius: 9999px;
-    background-color: #e6ffed;
-    color: #2F855A;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .error-title {
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: #1a202c;
-    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
   }
 
-  .highlight {
-    color: #38A169;
+  /* Código de alerta exigido por la gestión de estados de error */
+  .error-code {
+    font-size: clamp(4rem, 12vw, 7.5rem);
+    font-weight: 900;
+    color: #EF4444; /* Rojo Técnico Mate de Alerta */
+    letter-spacing: -0.04em;
+  }
+
+  .error-subtitle {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: #1a202c;
+    max-width: 90%;
   }
 
   .error-description {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-size: clamp(1rem, 2vw, 1.125rem);
     color: #4a5568;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    max-width: 620px;
+    font-family: var(--font-secondary, sans-serif);
   }
 
   .error-quote {
     font-style: italic;
     color: #2F855A;
     border-left: 4px solid #48BB78;
-    padding-left: 1.5rem;
-    margin: 0 auto 2.5rem auto;
-    max-width: 550px;
-    font-size: 1.05rem;
+    padding-left: clamp(1rem, 3vw, 1.5rem);
+    margin: 0 auto 3rem auto;
+    max-width: 580px;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
     text-align: left;
+    line-height: 1.5;
   }
 
   .error-quote footer {
+    display: block;
     font-style: normal;
     font-weight: 600;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
     color: #4a5568;
   }
 
   .error-actions {
     display: flex;
     gap: 1rem;
+    width: 100%;
+    /* Comportamiento responsivo: apilados en móvil, fila en desktop */
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-primary, sans-serif);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    min-height: 44px; /* Accesibilidad UX */
   }
 
   .btn-primary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
     background-color: #38A169;
     color: white;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 0.375rem;
-    transition: background-color 0.3s ease;
+    border: 2px solid #38A169;
   }
 
   .btn-primary:hover {
     background-color: #2F855A;
+    border-color: #2F855A;
   }
 
   .btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
     background-color: transparent;
     color: #38A169;
-    font-weight: 600;
-    text-decoration: none;
     border: 2px solid #38A169;
-    border-radius: 0.375rem;
-    transition: all 0.3s ease;
   }
 
   .btn-secondary:hover {
     background-color: #e6ffed;
+    color: #2F855A;
+    border-color: #2F855A;
+  }
+
+  @media (min-width: 640px) {
+    .error-actions {
+      flex-direction: row;
+      justify-content: center;
+      width: auto;
+    }
+    
+    .btn-primary, .btn-secondary {
+      width: auto;
+    }
   }
 </style>

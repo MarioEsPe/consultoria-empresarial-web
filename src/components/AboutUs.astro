@@ -2,33 +2,35 @@
 // src/components/About.astro
 ---
 
-<section id="nosotros" class="about-section">
+<section id="nosotros" class="about-section" aria-label="Acerca de Innova Praxis">
   <div class="container">
     <div class="about-grid">
+      
       <div class="about-image">
         <div class="image-placeholder">
+          <!-- El asset debe comprimirse en .WebP para AWS -->
           <span class="expertise-tag">PhD. Diana Sánchez</span>
         </div>
       </div>
       
       <div class="about-text">
-        <h2 class="section-title">Ciencia Aplicada a los Negocios</h2>
+        <h2 class="section-title">Autoridad basada en Evidencia</h2>
         <p class="lead-text">
-          En <strong>Innova Praxis</strong>, integramos el rigor del método científico como pilar fundamental para el desarrollo estratégico y la consolidación de modelos de negocio rentables y escalables.
+          <strong>Innova Praxis</strong> no opera bajo tendencias de moda, sino bajo estrictos protocolos industriales y normativos.
         </p>
         
         <p class="description">
-          Dirigidos por la Dra. Diana Estela Sánchez Herrera, científica de negocios y académica, nuestra filosofía se basa en una <strong>transformación digital realista</strong>. Guiamos la automatización mediante el uso ingenioso de herramientas accesibles, asegurando que cada implementación tecnológica ofrezca un retorno de inversión claro sin sacrificar el bienestar de los colaboradores.
+          La dirección ejecutiva, a cargo de la Dra. Diana Estela Sánchez Herrera (PhD), garantiza que cada intervención esté anclada en evidencia científica y revisada bajo estándares de Gobernanza Corporativa. Aseguramos que cada implementación ofrezca un retorno de inversión claro y auditable.
         </p>
 
         <div class="values-grid">
           <div class="value-item">
-            <span class="icon">🔬</span>
-            <p><strong>Disrupción Funcional:</strong> Soluciones elegantes, eficientes y realistas.</p>
+            <span class="icon" aria-hidden="true">🔬</span>
+            <p><strong>Rigor Analítico:</strong> Soluciones basadas en datos, no en suposiciones.</p>
           </div>
           <div class="value-item">
-            <span class="icon">🌱</span>
-            <p><strong>Liderazgo Sustentable:</strong> Rentabilidad en armonía con el medio ambiente.</p>
+            <span class="icon" aria-hidden="true">🛡️</span>
+            <p><strong>Blindaje Operativo:</strong> Cumplimiento normativo y mitigación de riesgos.</p>
           </div>
         </div>
       </div>
@@ -38,8 +40,7 @@
 
 <style>
   .about-section {
-    /* Padding fluido para respirar en desktop y ahorrar espacio en móvil */
-    padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem);
+    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
     background-color: #ffffff;
     width: 100%;
   }
@@ -52,21 +53,24 @@
 
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* Gap dinámico: 4rem en desktop, se reduce a 2rem en pantallas más chicas */
+    grid-template-columns: 1fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
+  }
+
+  @media (min-width: 860px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .image-placeholder {
     width: 100%;
     aspect-ratio: 4/5;
     background-color: #e2e8f0;
-    border-radius: 1rem;
+    border-radius: 0.5rem; /* Ajuste a radio de borde 0.375-0.5rem */
     position: relative;
     overflow: hidden;
-    /* Aquí podrías poner la imagen de la Dra. Diana */
-    background-image: url('/images/diana-sanchez-profile.jpg'); 
     background-size: cover;
     background-position: center;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
@@ -74,35 +78,36 @@
 
   .expertise-tag {
     position: absolute;
-    bottom: clamp(1rem, 3vw, 1.5rem);
-    left: clamp(1rem, 3vw, 1.5rem);
-    background: #2F855A;
-    color: white;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--color-primary-dark);
+    color: #ffffff;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.375rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
   }
 
   .section-title {
-    color: #1a202c;
-    /* Tipografía responsiva usando clamp */
+    color: var(--color-text-main);
     font-size: clamp(2rem, 5vw, 2.5rem);
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 800;
+    font-family: var(--font-primary);
   }
 
   .lead-text {
     font-size: clamp(1.125rem, 2vw, 1.25rem);
-    color: #2F855A;
+    color: var(--color-primary-dark);
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    font-weight: 500;
   }
 
   .description {
-    color: #4a5568;
+    color: var(--color-text-muted);
     line-height: 1.7;
     margin-bottom: 2rem;
     font-size: clamp(1rem, 1.5vw, 1.05rem);
@@ -110,7 +115,6 @@
 
   .values-grid {
     display: grid;
-    /* Evita que los valores se aplasten en pantallas pequeñas antes del breakpoint */
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
     gap: 1.5rem;
   }
@@ -119,34 +123,21 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: #f8fafc;
+    background-color: var(--color-bg-light);
     padding: 1rem;
-    border-radius: 0.5rem;
-    border-left: 3px solid #48BB78;
+    border-radius: 0.375rem;
+    border-left: 3px solid var(--color-primary-mid);
   }
 
   .value-item p {
     font-size: 0.95rem;
-    color: #2d3748;
+    color: var(--color-text-main);
     margin: 0;
     line-height: 1.5;
+    font-family: var(--font-secondary);
   }
 
   .icon {
     font-size: 1.5rem;
-  }
-
-  /* Cambio a una sola columna para móviles y tablets en modo retrato */
-  @media (max-width: 860px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      /* Invertimos el orden para que la imagen aparezca arriba en móviles */
-    }
-    
-    .about-image {
-      order: -1;
-      max-width: 500px; /* Evita que la imagen sea gigantesca en tablets */
-      margin: 0 auto;
-    }
   }
 </style>

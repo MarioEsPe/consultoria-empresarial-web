@@ -2,9 +2,13 @@
 // src/layouts/Layout.astro
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Innova Praxis | Consultoría y Transformación Digital" } = Astro.props;
+const { 
+  title = "Innova Praxis | Consultoría y Transformación Digital",
+  description = "Consultoría empresarial de alto nivel enfocada en optimizar y blindar la estructura operativa de empresas."
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -12,8 +16,15 @@ const { title = "Innova Praxis | Consultoría y Transformación Digital" } = Ast
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Carga optimizada de tipografías corporativas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <title>{title}</title>
   </head>
   <body>
@@ -23,6 +34,25 @@ const { title = "Innova Praxis | Consultoría y Transformación Digital" } = Ast
 
 {/* Usamos is:global para asegurar que el reseteo de box-sizing se propague a todos los componentes hijos */}
 <style is:global>
+  :root {
+    /* Paleta de Colores Corporativos */
+    --color-bg-light: #f8fafc;
+    --color-text-main: #1a202c;
+    --color-text-muted: #4a5568;
+    
+    --color-primary: #38A169;
+    --color-primary-dark: #2F855A;
+    --color-primary-light: #e6ffed;
+    --color-primary-mid: #48BB78;
+    
+    /* Rojo técnico para validaciones de error */
+    --color-error: #EF4444; 
+
+    /* Sistema Tipográfico B2B */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+  }
+
   /* Reseteo global: previene que paddings o bordes empujen elementos hacia afuera */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -35,11 +65,103 @@ const { title = "Innova Praxis | Consultoría y Transformación Digital" } = Ast
     width: 100%;
     max-width: 100vw;
     height: 100%;
+    
     /* Previene estrictamente la aparición de barras de desplazamiento horizontal no deseadas en móvil */
     overflow-x: hidden; 
+    
     /* Tipografía base fluida y limpia para la consultoría */
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f8fafc; /* Color de fondo general neutro claro */
-    color: #1a202c; /* Color de texto principal */
+    font-family: var(--font-secondary), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg-light); /* Color de fondo general neutro claro */
+    color: var(--color-text-main); /* Color de texto principal */
+    
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  /* 
+   * Esqueleto Semántico HTML5 y Propiedades CSS 
+   * Previene fatiga visual y aplica tracking/line-height analítico
+   */
+  h1, h2, h3, h4 {
+    font-family: var(--font-primary);
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.8125rem); /* Rango de 32pt a 45pt fluidos */
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: clamp(1.375rem, 3vw, 1.75rem); /* Rango de 22pt a 28pt fluidos */
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: clamp(0.875rem, 2vw, 1.125rem); /* Rango de 14pt a 18pt fluidos */
+    font-weight: 600;
+  }
+
+  p {
+    font-size: clamp(0.6875rem, 1.5vw, 0.8125rem); /* Rango de 11pt a 13pt fluidos */
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: var(--color-text-muted);
+    margin-top: 0;
+  }
+
+  /* Retícula y Contenedor Principal (1440px máximo) */
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* 
+   * UI Tokens: Estructura de Botones
+   * Radios de borde a 0.375rem y transición de 0.3s
+   */
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 44px; /* Accesibilidad táctil UX */
+    min-height: 44px;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
   }
 </style>
