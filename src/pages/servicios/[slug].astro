@@ -9,30 +9,35 @@ export function getStaticPaths() {
     {
       slug: 'ingenieria-ambiental',
       title: "Ingeniería Ambiental y Resiliencia Pluvial",
+      image: "/servicio-ptar-innovapraxis.webp",
       description: "Blindaje jurídico-ambiental bajo la NOM-001-SEMARNAT. Evitamos multas, detenemos fugas de capital en obra civil y diseñamos Plantas de Tratamiento de Aguas Residuales (PTARs) adaptadas a la topografía y necesidades de su proyecto.",
       ctaDetail: "Analizaremos las variables de su obra (junto a su constructora o despacho) para formular una propuesta de ingeniería precisa, estableciendo viabilidad, alcances y presupuestos claros."
     },
     {
       slug: 'digitalizacion-ia',
       title: "Digitalización e IA para Negocios",
+      image: "/servicio-digitalizacion-innovapraxis.webp",
       description: "Automatización táctica de flujos de trabajo. Eliminamos cuellos de botella mediante la integración de sistemas y herramientas de Inteligencia Artificial que justifican su retorno de inversión y elevan la productividad sin requerir curvas de aprendizaje excesivas.",
       ctaDetail: "Evaluaremos su infraestructura actual para presentarle una propuesta ejecutiva que detalle los costos, tiempos y límites de su evolución tecnológica."
     },
     {
       slug: 'project-management',
       title: "Project Management Hidrosanitario",
+      image: "/servicio-project-management-innovapraxis.webp",
       description: "Supervisión técnica especializada. Garantizamos que la ejecución en campo coincida milimétricamente con el cálculo estructural. Actuamos como su representante técnico para asegurar la calidad y el cumplimiento normativo ante contratistas.",
       ctaDetail: "En esta sesión inicial revisaremos los planos y la etapa actual de su proyecto para estructurar una propuesta de supervisión a la medida."
     },
     {
       slug: 'arquitectura-sustentable',
       title: "Arquitectura Sustentable",
+      image: "/servicio-arquitectura-sustentable-innovapraxis.webp",
       description: "Diseño pensado en la eficiencia del OPEX (Gastos Operativos). Optimizamos la rentabilidad del edificio a largo plazo mediante materiales inteligentes, eficiencia energética y aprovechamiento de recursos naturales, incrementando el valor comercial de su desarrollo.",
       ctaDetail: "Recabaremos la visión de su desarrollo para estructurar un plan de trabajo formal y una propuesta económica alineada a sus expectativas de inversión."
     },
     {
       slug: 'punto-agil',
       title: "Punto Ágil (Logística Automatizada)",
+      image: "/servicio-punto-agil-innovapraxis.webp",
       description: "Optimización de espacios de tránsito y servicios en sitio. Despliegue de celdas logísticas y vending inteligente para corporativos e industrias, garantizando una operación silenciosa y el cumplimiento estricto de la normativa vigente.",
       ctaDetail: "Evaluaremos la densidad y flujos de su institución para presentarle una propuesta de despliegue a la medida, detallando la logística operativa."
     }
@@ -57,6 +62,20 @@ const { servicio } = Astro.props;
         <h1 class="service-title">{servicio.title}</h1>
       </div>
     </header>
+
+    <div class="container">
+      <div class="service-hero-image">
+        <img 
+          src={servicio.image} 
+          alt={`Consultoría especializada en ${servicio.title} por Innova Praxis`} 
+          width="1200" 
+          height="600" 
+          loading="eager" 
+          fetchpriority="high"
+          class="service-img"
+        />
+      </div>
+    </div>
 
     <section class="service-content container">
       <div class="service-details">
@@ -91,7 +110,7 @@ const { servicio } = Astro.props;
 <style>
   .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   .service-page { background-color: var(--color-bg-light); min-height: 100vh; padding-bottom: 5rem; }
-  .service-header { background-color: #ffffff; padding: 4rem 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 3rem; }
+  .service-header { background-color: #ffffff; padding: 4rem 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 2rem; }
   
   .badge {
     display: inline-block; padding: 0.25rem 1rem; border-radius: 9999px;
@@ -100,6 +119,26 @@ const { servicio } = Astro.props;
   }
 
   .service-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-text-main); line-height: 1.2; }
+  
+  /* --- NUEVOS ESTILOS PARA LA IMAGEN PANORÁMICA --- */
+  .service-hero-image {
+    width: 100%;
+    margin-bottom: 3rem; /* Separación entre la imagen y el bloque de texto/tarjeta */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    background-color: #0B1325; /* Fondo de carga corporativo */
+  }
+
+  .service-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 21/9; /* Proporción ultra panorámica, ideal para cabeceras sin empujar el texto muy abajo */
+    object-fit: cover;
+    display: block;
+  }
+  /* ------------------------------------------------ */
+
   .service-content { display: grid; grid-template-columns: 1fr; gap: 3rem; }
 
   @media (min-width: 992px) { .service-content { grid-template-columns: 3fr 2fr; } }
