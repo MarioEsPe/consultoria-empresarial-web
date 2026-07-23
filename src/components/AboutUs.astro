@@ -8,7 +8,16 @@
       
       <div class="about-image">
         <div class="image-placeholder">
-          <!-- El asset debe comprimirse en .WebP para AWS -->
+          <img 
+            src="/diana-sanchez-herrera-directora-innovapraxis.webp" 
+            alt="Fotografía profesional de la Dra. Diana Estela Sánchez Herrera, Directora General de Innova Praxis, especializada en consultoría estratégica, optimización de procesos corporativos y transformación digital B2B." 
+            title="Dra. Diana Sánchez - Dirección Ejecutiva Innova Praxis"
+            class="profile-image" 
+            width="500" 
+            height="600" 
+            loading="lazy" 
+            decoding="async"
+          />
           <span class="expertise-tag">PhD. Diana Sánchez</span>
         </div>
       </div>
@@ -64,6 +73,16 @@
     }
   }
 
+  .profile-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4; /* Proporción clásica para retratos corporativos */
+  object-fit: cover; /* A diferencia del logo, aquí SÍ queremos que llene el espacio */
+  object-position: center top; /* Asegura que el rostro no se corte si la pantalla cambia de tamaño */
+  border-radius: 0.5rem; /* Bordes suaves según tu sistema de diseño */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
   .image-placeholder {
     width: 100%;
     aspect-ratio: 4/5;

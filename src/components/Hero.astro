@@ -41,9 +41,16 @@ const {
     </div>
 
     <div class="hero-visual">
-      <div class="visual-placeholder">
-        <span class="visual-note">Asset fotográfico B2B (.WebP) <br/> Entorno real o consultoría</span>
-      </div>
+      <img 
+        src="/optimizacion-procesos-rentabilidad-corporativa-innovapraxis.webp" 
+        alt="Consultoría estratégica B2B en InnovaPraxis: Diseño de arquitectura de procesos y reducción de OPEX para la rentabilidad corporativa del sector industrial." 
+        title="InnovaPraxis - Metodología de Rentabilidad Corporativa"
+        class="hero-image"
+        width="800"
+        height="600"
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
   </div>
 </section>
@@ -214,22 +221,12 @@ const {
     align-items: center;
   }
 
-  .visual-placeholder {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background-color: #e2e8f0;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px dashed #cbd5e1;
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .visual-note {
-    font-size: 0.875rem;
-    color: #4a5568;
-    line-height: 1.5;
+  .hero-image {
+  width: 100%;
+  height: auto;
+  /* Cambiamos 'cover' por 'contain' para garantizar que no se corte ningún borde */
+  object-fit: contain; 
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 </style>
