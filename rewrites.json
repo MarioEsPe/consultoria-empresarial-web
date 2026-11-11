@@ -25,6 +25,31 @@
     "target": "https://www.innovapraxis.mx"
   },
   {
+    "source": "/servicios/ingenieria-ambiental",
+    "status": "301",
+    "target": "/servicios/ingenieria-hidrosanitaria-star"
+  },
+  {
+    "source": "/servicios/arquitectura-sustentable",
+    "status": "301",
+    "target": "/servicios/rescate-regularizacion-star"
+  },
+  {
+    "source": "/servicios/digitalizacion-ia",
+    "status": "301",
+    "target": "/#servicios"
+  },
+  {
+    "source": "/servicios/project-management",
+    "status": "301",
+    "target": "/#servicios"
+  },
+  {
+    "source": "/servicios/punto-agil",
+    "status": "301",
+    "target": "/#servicios"
+  },
+  {
     "source": "/<*>",
     "status": "404",
     "target": "/404.html"

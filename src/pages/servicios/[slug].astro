@@ -4,29 +4,64 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 
+interface Servicio {
+  slug: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  description: string;
+  deliverables: string[];
+  limitations: string[];
+  allianceText: string;
+  ctaDetail: string;
+}
+
 export function getStaticPaths() {
-  const servicios = [
+  const servicios: Servicio[] = [
     {
-      slug: 'ingenieria-ambiental',
-      title: "Ingeniería Hidrosanitaria, Diseño Conceptual de STAR y Resiliencia Pluvial (SuDS)",
-      image: "/servicio-ptar-innovapraxis.webp",
-      description: `Aseguramos la viabilidad hidrosanitaria, normativa y financiera de su desarrollo desde la pre-inversión o durante ajustes de obra. Ejecutamos memorias de cálculo de aforos reales bajo metodología científica Bottom-Up, diseño conceptual de Sistemas de Tratamiento de Aguas Residuales (STAR) adaptados a geologías complejas (como el suelo kárstico y costero), segregación estratégica de aguas grises hacia núcleos de biofiltración activa, diseño de Sistemas Urbanos de Drenaje Sostenible (SuDS) y blindaje jurídico-ambiental de Línea Base ("Estado Cero"). 
-
-Nuestro entregable constituye un Expediente Ejecutivo y Guía Maestra con planimetría y despieces constructivos milimétricos para que su constructora edifique con cero incertidumbre y reduzca hasta en un 40% el gasto operativo (OPEX) a largo plazo.
-
-ALCANCES, LIMITACIONES Y ALIANZAS DE EJECUCIÓN: Por principio de imparcialidad fiduciaria, Innova Praxis no ejecuta obra civil en campo, no realiza supervisión presencial de obra ni funge como gestor legal ante dependencias. No obstante, si su organización no es una constructora, contamos con alianzas estratégicas certificadas que pueden ejecutar la obra civil y suministrar los biorreactores, equipos o insumos requeridos bajo las especificaciones exactas de nuestro dictamen.`,
-      ctaDetail: "Evaluaremos la etapa actual de su proyecto o licitación para estructurar una propuesta formal de consultoría con entregables, alcances y límites transparentes desde el primer día."
+      slug: 'ingenieria-hidrosanitaria-star',
+      badge: 'Pre-Inversión, Obra Nueva y Licitaciones',
+      title: 'Ingeniería Hidrosanitaria, Diseño Conceptual de STAR y Resiliencia Pluvial (SuDS)',
+      subtitle: 'Asegure la viabilidad técnica, normativa y financiera de su desarrollo antes de que la primera pala toque el suelo. Usted ejecuta la obra; nosotros blindamos su capital con ingeniería basada en evidencia científica.',
+      image: '/servicio-ptar-innovapraxis.webp',
+      description: 'Edificar sobre plataformas geológicas complejas —como el suelo kárstico permeable y los mantos freáticos someros— sin un dimensionamiento riguroso convierte cualquier proyecto en un pasivo ambiental y financiero. Un Sistema de Tratamiento de Aguas Residuales (STAR) mal seleccionado incrementa el Gasto Operativo (OPEX) hasta en un 40% durante toda la vida útil del inmueble, mientras que las modificaciones correctivas en etapa constructiva superan el 25% del costo de la obra. Con una inversión en consultoría preventiva inferior al 0.5% del valor del proyecto, sustituimos la improvisación por certeza fiduciaria.',
+      deliverables: [
+        'Cálculo matemático de aforos reales bajo metodología Bottom-Up (caudales mínimos de supervivencia biológica y picos de máxima simultaneidad desglosados mueble por mueble).',
+        'Ingeniería de segregación estratégica de redes: separación de aguas negras, rescate de aguas grises seguras mediante biofiltración activa fitorremediadora y aislamiento pluvial.',
+        'Diseño conceptual y selección tecnológica imparcial de STAR de flujo pasivo (incluyendo biotecnología propia SITAR® de cero consumo eléctrico) y pretratamientos geométricos.',
+        'Ingeniería de Resiliencia Pluvial (SuDS): diseño estratigráfico de pavimentos permeables, trincheras de infiltración, pozos de absorción con válvulas anti-reflujo y mitigación geotécnica.',
+        'Planimetría ejecutiva en AutoCAD (.dwg), cortes de cámaras de confinamiento con disociación de cargas vehiculares, despieces mecánicos y protocolo de Línea Base ("Estado Cero").'
+      ],
+      limitations: [
+        'Cero conflicto de interés en obra civil: No ejecutamos excavaciones, albañilería, plomería ni aplicamos físicamente insumos en campo.',
+        'Guía autodirigida sin residencia de obra: No realizamos supervisión presencial de obra civil; nuestros planos y memorias contienen el rigor milimétrico para que sus residentes o constructora ejecuten sin desviaciones.',
+        'Respaldo técnico sin gestoría jurídica: Entregamos toda la ingeniería y memorias descriptivas oficiales, pero el ingreso de trámites y firma legal ante dependencias corresponde al representante legal del cliente.'
+      ],
+      allianceText: '¿Su organización no es una constructora? Si requiere quién materialice la obra civil o suministre el equipamiento de nuestro dictamen, activamos nuestra red de alianzas estratégicas certificadas (contratistas de obra civil hidrosanitaria, fabricantes de biorreactores pasivos e insumos biotecnológicos como DLD14 Proyectos®, e integradores de instrumentación) para ejecutar su proyecto bajo nuestro estándar técnico.',
+      ctaDetail: 'Analizaremos la etapa actual de su desarrollo o licitación para formular una propuesta de consultoría precisa, estableciendo entregables, alcances y presupuestos claros desde el primer día.'
     },
     {
-      slug: 'arquitectura-sustentable',
-      title: "Diagnóstico, Rescate Operativo y Regularización Normativa de STAR",
-      image: "/servicio-arquitectura-sustentable-innovapraxis.webp",
-      description: `Diseñado para empresas, industrias, universidades y desarrollos en operación cuyos Sistemas de Tratamiento de Aguas Residuales (STAR), biodigestores o antiguas plantas presentan fallos operativos, saturación o riesgo de multas ante la NOM-001-SEMARNAT-2021. Realizamos auditoría física e ingeniería inversa en sitio (conciliando planos antiguos contra la realidad física en campo) y emitimos el Estudio Diagnóstico y Dictamen de Reingeniería con las adecuaciones exactas para rescatar, modernizar y regularizar su infraestructura, incluyendo la especificación de medidores de flujo (NMX-AA-179-SCFI-2018), puertos de muestreo y guía técnica para la exención del pago de derechos ante CONAGUA (DECLARAGUA y SIRALAB).
-
-El dictamen se entrega como una Guía Maestra de Apoyo Técnico (estructurable en etapas modulares acordes a su presupuesto) con la cual sus propios operadores o su constructora de confianza pueden ejecutar los procedimientos y obras civiles de rescate sin detener su operación.
-
-ALCANCES, LIMITACIONES Y ALIANZAS DE EJECUCIÓN: Innova Praxis entrega la ingeniería diagnóstica y proyectiva; no realizamos el trabajo físico en campo para aplicar las soluciones del dictamen ni supervisamos obra civil. Sin embargo, en caso de que usted no cuente con una constructora para ejecutar los trabajos en obra, ponemos a su disposición nuestra red de alianzas estratégicas para la ejecución civil y el suministro de biotecnología, equipos e insumos acordes a las necesidades de su proyecto.`,
-      ctaDetail: "Analizaremos la situación actual de su sistema en operación para definir los alcances del levantamiento en sitio y estructurar su diagnóstico de rescate y regularización."
+      slug: 'rescate-regularizacion-star',
+      badge: 'Inmuebles en Operación, Industria e Instituciones',
+      title: 'Diagnóstico Pericial, Rescate Operativo y Regularización Normativa de STAR',
+      subtitle: 'Transforme sistemas de tratamiento en fallo, obsoletos o fuera de norma en infraestructura depuradora eficiente, auditable y alineada con la NOM-001-SEMARNAT-2021 mediante un Plan Maestro de Reingeniería.',
+      image: '/servicio-arquitectura-sustentable-innovapraxis.webp',
+      description: 'Numerosas empresas, universidades, hoteles e industrias operan con infraestructura hidrosanitaria rebasada: antiguas plantas electromecánicas inoperantes, biodigestores saturados o redes modificadas sin planos actualizados. Descargar fuera de parámetros expone a su organización a multas federales acumuladas, pérdida de beneficios fiscales y órdenes de clausura ante CONAGUA o PROFEPA. En Innova Praxis realizamos la ingeniería inversa en sitio y emitimos el Estudio Diagnóstico y Dictamen de Reingeniería que funciona como una Guía Maestra de Apoyo Técnico para que sus propios operadores o su constructora rescaten y regularicen el sistema paso a paso.',
+      deliverables: [
+        'Auditoría física e ingeniería inversa hidrosanitaria en sitio (conciliación real entre planos históricos y trayectorias físicas de registros, tuberías y desfogues en campo).',
+        'Dictamen pericial de viabilidad, rescate de infraestructura existente o aislamiento técnico (bypass) de reactores colapsados sin incurrir en demoliciones costosas.',
+        'Ingeniería de adecuación y pretratamiento correctivo: desarenadores, trampas de grasas/natas, elevación de registros contra inundaciones y protocolos de bioseguridad enzimática.',
+        'Ruta de cumplimiento metrológico y fiscal: especificación de Puertos de Muestreo, medidores de caudal bajo la NMX-AA-179-SCFI-2018 y guía técnica para DECLARAGUA y SIRALAB.',
+        'Programación presupuestal modular: estructuración del Plan Maestro en etapas operativas autónomas y secuenciales adaptadas al flujo de caja o techo presupuestal de su institución.'
+      ],
+      limitations: [
+        'Independencia pericial (No ejecutamos trabajo físico en campo): Nuestro alcance es el estudio diagnóstico y el dictamen de ingeniería; no realizamos maniobras físicas de limpieza, plomería ni obra civil para aplicar las soluciones.',
+        'Manual ejecutivo sin supervisión de obra: No supervisamos obra civil presencialmente; el dictamen está diseñado como una guía técnica detallada para que su personal de mantenimiento o su constructora ejecuten las adecuaciones con total certeza.',
+        'Atribución administrativa: Proveemos los anexos técnicos, memorias y guías de llenado normativo, manteniendo la firma y representación legal de los trámites bajo control directo de su organización.'
+      ],
+      allianceText: '¿No cuenta con constructora propia para ejecutar el rescate en campo? Contamos con alianzas estratégicas listas para intervenir: empresas ejecutoras de obra civil especializada y proveedores directos de biotecnología, equipos de medición e insumos enzimáticos que pueden cotizar y ejecutar las obras físicas apegándose estrictamente a las etapas de nuestro dictamen.',
+      ctaDetail: 'Evaluaremos la problemática operativa y normativa de su sistema actual para definir el alcance del levantamiento en sitio y estructurar su diagnóstico de rescate y regularización.'
     }
   ];
 
@@ -34,6 +69,10 @@ ALCANCES, LIMITACIONES Y ALIANZAS DE EJECUCIÓN: Innova Praxis entrega la ingeni
     params: { slug: servicio.slug },
     props: { servicio },
   }));
+}
+
+interface Props {
+  servicio: Servicio;
 }
 
 const { servicio } = Astro.props;
@@ -45,8 +84,9 @@ const { servicio } = Astro.props;
   <main class="service-page">
     <header class="service-header">
       <div class="container">
-        <span class="badge">Consultoría Especializada</span>
+        <span class="badge">{servicio.badge}</span>
         <h1 class="service-title">{servicio.title}</h1>
+        <p class="service-subtitle">{servicio.subtitle}</p>
       </div>
     </header>
 
@@ -66,15 +106,43 @@ const { servicio } = Astro.props;
 
     <section class="service-content container">
       <div class="service-details">
-        <h2 class="section-subtitle">Descripción del Servicio</h2>
-        <p class="description">{servicio.description}</p>
+        <div class="content-block">
+          <h2 class="section-subtitle">Enfoque Científico y Rentabilidad Operativa</h2>
+          <p class="description">{servicio.description}</p>
+        </div>
+
+        <div class="scope-box deliverables-box">
+          <h3 class="box-title">✅ ¿Qué SÍ entregamos? (Alcances de Nuestro Dictamen y Diseño)</h3>
+          <ul class="scope-list">
+            {servicio.deliverables.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="scope-box limitations-box">
+          <h3 class="box-title">🛡️ Transparencia Consultiva: Alcances y Limitaciones Claras</h3>
+          <p class="box-intro">
+            Para garantizar una relación de confianza total y <strong>cero conflicto de interés</strong>, delimitamos con precisión dónde concluye nuestra intervención intelectual:
+          </p>
+          <ul class="scope-list">
+            {servicio.limitations.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="scope-box alliance-box">
+          <h3 class="box-title">🤝 Red de Alianzas Estratégicas para Ejecución y Suministro</h3>
+          <p class="alliance-text">{servicio.allianceText}</p>
+        </div>
       </div>
 
       <aside class="service-action-panel">
         <div class="consulting-card">
-          <div class="label-b2b">Consultoría B2B</div>
-          <h3>Primer Paso: Diagnóstico</h3>
-          <p class="cta-call">Solicite una sesión de evaluación para estructurar su proyecto con el rigor técnico que su organización requiere.</p>
+          <div class="label-b2b">Consultoría B2B Imparcial</div>
+          <h3>Primer Paso: Evaluación Técnica</h3>
+          <p class="cta-call">Solicite una sesión diagnóstica para estructurar su proyecto con el rigor científico y normativo que su organización requiere.</p>
           
           <div class="action-buttons">
             <a href="/#contacto" class="btn-primary">Solicitar Evaluación de Proyecto</a>
@@ -83,8 +151,12 @@ const { servicio } = Astro.props;
           <hr class="divider" />
           
           <div class="cta-detail">
-            <h4>¿Qué incluye esta sesión?</h4>
+            <h4>¿Qué incluye esta sesión inicial?</h4>
             <p>{servicio.ctaDetail}</p>
+          </div>
+
+          <div class="differentiator-mini">
+            <strong>Respaldo Exclusivo:</strong> Dirección técnica liderada por la Dra. Diana Sánchez H. (PhD), creadora de la tecnología <strong>SITAR®</strong> y consultora certificada SEP-CONOCER (EC0249 / EC0104).
           </div>
         </div>
       </aside>
@@ -96,60 +168,138 @@ const { servicio } = Astro.props;
 
 <style>
   .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-  .service-page { background-color: var(--color-bg-light); min-height: 100vh; padding-bottom: 5rem; }
-  .service-header { background-color: #ffffff; padding: 4rem 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 2rem; }
+  .service-page { background-color: var(--color-bg-light); min-height: 100vh; padding-top: 70px; padding-bottom: 5rem; }
+  .service-header { background-color: #ffffff; padding: 3.5rem 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 2.5rem; }
   
   .badge {
-    display: inline-block; padding: 0.25rem 1rem; border-radius: 9999px;
+    display: inline-block; padding: 0.35rem 1rem; border-radius: 9999px;
     background-color: var(--color-primary-light); color: var(--color-primary-dark);
-    font-size: 0.875rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1.5rem;
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.25rem;
+    letter-spacing: 0.03em;
   }
 
-  .service-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-text-main); line-height: 1.2; }
+  .service-title { font-size: clamp(1.85rem, 3.8vw, 2.75rem); font-weight: 800; color: var(--color-text-main); line-height: 1.2; margin-bottom: 1rem; }
   
-  /* --- NUEVOS ESTILOS PARA LA IMAGEN PANORÁMICA --- */
+  .service-subtitle {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    color: var(--color-primary-dark);
+    font-weight: 500;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0;
+  }
+
   .service-hero-image {
     width: 100%;
-    margin-bottom: 3rem; /* Separación entre la imagen y el bloque de texto/tarjeta */
+    margin-bottom: 3rem;
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    background-color: #0B1325; /* Fondo de carga corporativo */
+    background-color: #0B1325;
   }
 
   .service-img {
     width: 100%;
     height: auto;
-    aspect-ratio: 21/9; /* Proporción ultra panorámica, ideal para cabeceras sin empujar el texto muy abajo */
+    aspect-ratio: 21/9;
     object-fit: cover;
     display: block;
   }
-  /* ------------------------------------------------ */
 
-  .service-content { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+  .service-content { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: start; }
 
-  @media (min-width: 992px) { .service-content { grid-template-columns: 3fr 2fr; } }
+  @media (min-width: 992px) { .service-content { grid-template-columns: 1.8fr 1fr; } }
 
-  .service-details h2 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: 1rem; font-family: var(--font-primary); }
-  .description { font-size: 1.125rem; color: var(--color-text-muted); line-height: 1.8; font-family: var(--font-secondary); }
+  .content-block { margin-bottom: 2.5rem; }
+  .service-details h2 { font-size: 1.5rem; color: var(--color-text-main); margin-bottom: 1rem; font-family: var(--font-primary); font-weight: 700; }
+  .description { font-size: 1.05rem; color: var(--color-text-muted); line-height: 1.8; font-family: var(--font-secondary); }
 
-  .consulting-card {
-    background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); position: sticky; top: 100px;
+  /* Tarjetas de Alcances, Limitaciones y Alianzas */
+  .scope-box {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
   }
 
-  .label-b2b { font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700; margin-bottom: 0.5rem; }
-  .consulting-card h3 { font-size: 1.25rem; color: var(--color-text-main); margin-bottom: 1rem; font-family: var(--font-primary); }
-  .cta-call { font-size: 0.95rem; color: var(--color-text-main); font-weight: 500; margin-bottom: 1.5rem; }
+  .deliverables-box { border-left: 5px solid var(--color-primary); }
+  .limitations-box { border-left: 5px solid #0B1325; background-color: #f8fafc; }
+  .alliance-box { border-left: 5px solid #2F855A; background-color: #f0fff4; }
+
+  .box-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+    font-family: var(--font-primary);
+  }
+
+  .box-intro {
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .scope-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .scope-list li {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    font-family: var(--font-secondary);
+  }
+
+  .alliance-text {
+    font-size: 0.98rem;
+    color: #1a202c;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Panel Lateral Sticky */
+  .consulting-card {
+    background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 2rem;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08); position: sticky; top: 95px;
+  }
+
+  .label-b2b { font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary-dark); font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+  .consulting-card h3 { font-size: 1.3rem; color: var(--color-text-main); margin-bottom: 1rem; font-family: var(--font-primary); font-weight: 700; }
+  .cta-call { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
   
   .btn-primary {
     display: block; background-color: var(--color-primary); color: white; border: none;
     padding: 1rem; font-size: 1rem; font-weight: 700; border-radius: 0.375rem; text-decoration: none;
-    text-align: center; transition: background-color 0.3s ease;
+    text-align: center; transition: background-color 0.3s ease; width: 100%;
   }
   .btn-primary:hover { background-color: var(--color-primary-dark); }
 
-  .divider { border: 0; height: 1px; background-color: #e2e8f0; margin: 2rem 0; }
-  .cta-detail h4 { font-size: 0.9rem; color: var(--color-text-main); margin-bottom: 0.5rem; font-weight: 600; }
-  .cta-detail p { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; font-style: italic; }
+  .divider { border: 0; height: 1px; background-color: #e2e8f0; margin: 1.75rem 0; }
+  .cta-detail h4 { font-size: 0.9rem; color: var(--color-text-main); margin-bottom: 0.5rem; font-weight: 700; }
+  .cta-detail p { font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+
+  .differentiator-mini {
+    background-color: #0B1325;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    font-family: var(--font-secondary);
+  }
+
+  .differentiator-mini strong { color: #4CE679; }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 1.25rem; }
+    .scope-box { padding: 1.5rem; }
+  }
 </style>
