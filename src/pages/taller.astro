@@ -1,0 +1,333 @@
+---
+// src/pages/taller.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Puedes ajustar el título o subtítulo según el nombre exacto de la ponencia
+const workshopInfo = {
+  badge: "Sesión Ejecutiva y Material de Trabajo",
+  title: "Guía Práctica de Diagnóstico y Viabilidad",
+  speaker: "Impartido por: Dra. Diana Estela Sánchez Herrera (PhD)",
+  pdfUrl: "/material-taller-innovapraxis.pdf",
+  pdfDownloadName: "Material-Taller-InnovaPraxis.pdf"
+};
+---
+
+<Layout 
+  title={`${workshopInfo.title} | Innova Praxis`}
+  description="Acceso directo al material de trabajo en PDF para participantes de la sesión ejecutiva de Innova Praxis."
+>
+  <Navbar />
+
+  <main class="workshop-page">
+    <div class="container">
+      
+      <!-- Tarjeta Principal de Cero Fricción -->
+      <section class="workshop-card" aria-label="Descarga y lectura de material de trabajo">
+        <span class="badge">{workshopInfo.badge}</span>
+        <h1 class="workshop-title">{workshopInfo.title}</h1>
+        <p class="speaker-name">{workshopInfo.speaker}</p>
+
+        <div class="instructions-box">
+          <p>
+            <strong>Instrucciones rápidas:</strong> Seleccione <strong>"Abrir Material en Pantalla"</strong> para leer el documento inmediatamente en su teléfono o computadora. Si desea guardar una copia en su dispositivo, utilice el segundo botón.
+          </p>
+        </div>
+
+        <!-- Botones Gigantes de Alto Contraste para Adultos -->
+        <div class="action-buttons">
+          <a 
+            href={workshopInfo.pdfUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-open-pdf"
+          >
+            <span class="btn-icon" aria-hidden="true">👁️</span>
+            <span>
+              <strong>Abrir Material en Pantalla</strong>
+              <small>Lectura inmediata (Ideal para Celular y Tablet)</small>
+            </span>
+          </a>
+
+          <a 
+            href={workshopInfo.pdfUrl} 
+            download={workshopInfo.pdfDownloadName} 
+            class="btn-download-pdf"
+          >
+            <span class="btn-icon" aria-hidden="true">⬇️</span>
+            <span>
+              <strong>Guardar Copia en mi Dispositivo</strong>
+              <small>Descargar archivo PDF para consulta offline</small>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Visor Incrustado Automático (Visible en Laptops y Tablets grandes) -->
+      <section class="desktop-preview-section" aria-label="Vista previa del documento">
+        <div class="preview-header">
+          <h2>Vista Previa Interactiva del Documento</h2>
+          <a href={workshopInfo.pdfUrl} target="_blank" rel="noopener noreferrer" class="fullscreen-link">
+            Expandir a pantalla completa ↗
+          </a>
+        </div>
+        <div class="pdf-container">
+          <iframe 
+            src={`${workshopInfo.pdfUrl}#view=FitH`} 
+            title="Material de trabajo en PDF"
+            width="100%" 
+            height="750"
+          >
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Bloque de Conversión B2B Post-Exposición -->
+      <section class="b2b-cta-banner">
+        <div class="cta-text">
+          <h3>¿Requiere evaluar un proyecto específico en su empresa o institución?</h3>
+          <p>Solicite un diagnóstico técnico de viabilidad o rescate de infraestructura bajo estricta confidencialidad.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="/#contacto" class="btn-primary">Solicitar Evaluación Técnica</a>
+          <a href="/#servicios" class="btn-secondary">Ver Alcances de Consultoría</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .workshop-page {
+    background-color: var(--color-bg-light, #f8fafc);
+    min-height: 100vh;
+    padding-top: 95px;
+    padding-bottom: 4rem;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .workshop-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-top: 5px solid var(--color-primary, #38A169);
+    border-radius: 0.5rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border-radius: 9999px;
+    background-color: var(--color-primary-light, #e6ffed);
+    color: var(--color-primary-dark, #2F855A);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .workshop-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--color-text-main, #1a202c);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .speaker-name {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--color-primary-dark, #2F855A);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .instructions-box {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .instructions-box p {
+    font-size: 1rem;
+    color: #334155;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .btn-open-pdf,
+  .btn-download-pdf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    text-align: left;
+    width: 100%;
+  }
+
+  .btn-open-pdf {
+    background-color: var(--color-primary, #38A169);
+    color: #ffffff;
+    border: 2px solid var(--color-primary, #38A169);
+    box-shadow: 0 4px 12px rgba(56, 161, 105, 0.25);
+  }
+
+  .btn-open-pdf:hover {
+    background-color: var(--color-primary-dark, #2F855A);
+    border-color: var(--color-primary-dark, #2F855A);
+    transform: translateY(-2px);
+  }
+
+  .btn-download-pdf {
+    background-color: #0B1325;
+    color: #ffffff;
+    border: 2px solid #0B1325;
+  }
+
+  .btn-download-pdf:hover {
+    background-color: #1e293b;
+    transform: translateY(-2px);
+  }
+
+  .btn-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .btn-open-pdf span strong,
+  .btn-download-pdf span strong {
+    display: block;
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .btn-open-pdf span small,
+  .btn-download-pdf span small {
+    display: block;
+    font-family: var(--font-secondary, 'Inter', sans-serif);
+    font-size: 0.88rem;
+    opacity: 0.9;
+  }
+
+  /* Visor Incrustado para Laptops (Se oculta en celulares para evitar problemas de scroll) */
+  .desktop-preview-section {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (min-width: 768px) {
+    .action-buttons {
+      flex-direction: row;
+    }
+    .desktop-preview-section {
+      display: block;
+    }
+  }
+
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .preview-header h2 {
+    font-size: 1.15rem;
+    margin: 0;
+    color: var(--color-text-main);
+  }
+
+  .fullscreen-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
+  .fullscreen-link:hover {
+    text-decoration: underline;
+  }
+
+  .pdf-container {
+    border: 1px solid #cbd5e1;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    background-color: #334155;
+  }
+
+  .pdf-container iframe {
+    border: none;
+    display: block;
+  }
+
+  /* Banner de conversión final */
+  .b2b-cta-banner {
+    background-color: #0B1325;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta-text h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .cta-actions {
+      flex-direction: row;
+      justify-content: center;
+      width: auto;
+    }
+  }
+</style>
